@@ -16,6 +16,9 @@ int main() {
         cout << "----------------------------" << Qt::endl;
     }
 
+    // returning allocated memory
+    for(int i = 0; i < rectangles.size(); i++) delete rectangles.at(i);
+
     cout.flush();
     return 0;
 }
