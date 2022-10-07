@@ -18,7 +18,7 @@ int main() {
 
     App* app = new App();
 
-   app->addToList();
+   app->loop();
    cout << app->list;
 
 

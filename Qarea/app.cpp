@@ -11,6 +11,7 @@ App::App() {
 
 void App::printPrompt() {
     QTextStream cout(stdout);
+    cout << "-> Enter '-1' to exit" << Qt::endl;
     cout << "-> Please enter the rectangle width and length separated by space" << Qt::endl;
 }
 
@@ -33,12 +34,24 @@ Rectangle* App::createRect() {
     }
 
     catch(const std::runtime_error& err) {
-        std::cout << err.what() << std::endl;
+        std::cerr << err.what() << std::endl;
         return nullptr;
     }
 }
 
 void App::addToList() {
     Rectangle* r = this->createRect();
-    if(r != nullptr) this->list.addToList(r);
+    if(r == nullptr) throw std::runtime_error("");
+    this->list.addToList(r);
+}
+
+void App::loop() {
+    while(this->isRunning) {
+        try {
+            this->addToList();
+        }
+        catch(std::runtime_error& err) {
+            std::cerr << err.what() << std::endl;
+        }
+    }
 }
