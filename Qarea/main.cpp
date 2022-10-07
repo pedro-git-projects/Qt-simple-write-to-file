@@ -1,26 +1,43 @@
 #include <QTextStream>
 #include <QVector>
-#include <initializer_list>
-#include <iostream>
+#include <QFile>
 #include "rectangle.h"
 #include "rectangles.h"
+#include "app.h"
+
+bool isRunning = true;
 
 int main() {
+    QFile outputFile("areas.txt");
+    outputFile.open(QIODevice::WriteOnly | QIODevice::Text);
+
     QTextStream cout(stdout);
-    QVector<Rectangle*> rectangles;
 
-    rectangles.push_back(new Rectangle());
-    rectangles.push_back(new Rectangle(7.5, 10.5));
-    rectangles.push_back(new Rectangle(5.0, 2.0));
 
-    for(int i = 0; i < rectangles.size(); i++) {
-        cout << "Rectangle " << i + 1 << Qt::endl;
-        cout << *rectangles[i] << Qt::endl;
-        cout << "----------------------------" << Qt::endl;
+    QTextStream out(&outputFile);
+
+    App* app = new App();
+
+   app->addToList();
+   cout << app->list;
+
+
+    /*
+    QTextStream cin(stdin);
+
+    cout << "Enter '0' to quit" << Qt::endl;
+    float w, l;
+    while(isRunning) {
+        cout << "-> Please enter the rectangle width and length separated by space" << Qt::endl;
+        cin >> w >> l;
+        //if(w == 0 || l == 0) isRunning = false;
+        if(!(cin.status() == QTextStream::Ok)) {
+            cout.setStatus(QTextStream::Ok);
+            cout << "-> Please enter float values!" << Qt::endl;
+            cin >> w >> l;
+        }
     }
 
-    // returning allocated memory
-    for(int i = 0; i < rectangles.size(); i++) delete rectangles.at(i);
 
     Rectangle* r1 = new Rectangle(4.0, 2.0);
     Rectangles* rs = new Rectangles({r1, new Rectangle(1.0, 2.0), new Rectangle(7.0, 4.0)});
@@ -28,5 +45,7 @@ int main() {
     cout << *rs;
 
     cout.flush();
+    */
+    outputFile.close();
     return 0;
 }

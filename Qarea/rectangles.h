@@ -14,6 +14,7 @@ public:
     friend QTextStream& operator<<(QTextStream& dbg, const Rectangles& r);
 
     void print();
+    void addToList(Rectangle* rect);
 
     QVector<Rectangle*> getRectList() const;
 

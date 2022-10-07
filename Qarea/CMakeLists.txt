@@ -20,6 +20,8 @@ add_executable(Qarea
   rectangle.h
   rectangles.cpp
   rectangles.h
+  app.h
+  app.cpp
 )
 target_link_libraries(Qarea Qt${QT_VERSION_MAJOR}::Core)
 

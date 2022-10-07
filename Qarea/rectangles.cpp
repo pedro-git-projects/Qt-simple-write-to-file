@@ -35,3 +35,7 @@ QTextStream& operator<<(QTextStream& dbg, const Rectangles& r) {
     dbg << acc;
     return dbg;
 }
+
+void Rectangles::addToList(Rectangle* rect) {
+    this->rectList.push_back(rect);
+}
