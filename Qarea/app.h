@@ -12,6 +12,8 @@ public:
     bool isRunning;
     float l;
     float w;
+    float tempW;
+    float tempL;
     Rectangles list;
 
 
@@ -19,7 +21,7 @@ public:
     void printPrompt();
     void addToList();
     void loop();
-    void setRunning(std::runtime_error err);
+    bool isNeagtive(float w, float l);
     Rectangle* createRect();
 };
 

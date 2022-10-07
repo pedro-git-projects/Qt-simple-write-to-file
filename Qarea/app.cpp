@@ -15,10 +15,22 @@ void App::printPrompt() {
     cout << "-> Please enter the rectangle width and length separated by space" << Qt::endl;
 }
 
+bool App::isNeagtive (float w, float l) {
+    bool result = (l < 0 || w < 0) ? true : false;
+    return result;
+}
+
 void App::readFloats() {
     QTextStream cin(stdin);
     this->printPrompt();
-    cin >> this->w >> this->l;
+    cin >> tempW >> tempL;
+
+    if(!(this->isNeagtive(tempW, tempL))) {
+        this->w = tempW;
+        this->l = tempL;
+    } else {
+        this->isRunning = false;
+    }
 
     if(cin.status() != QTextStream::Ok) {
         cin.resetStatus();
