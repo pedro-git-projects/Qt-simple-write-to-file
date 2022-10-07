@@ -10,10 +10,10 @@ class App {
 public:
     App();
     bool isRunning;
-    float l;
-    float w;
-    float tempW;
-    float tempL;
+    double l;
+    double w;
+    double tempW;
+    double tempL;
     Rectangles list;
 
 
@@ -21,8 +21,8 @@ public:
     void printPrompt();
     void addToList();
     void loop();
-    bool isNeagtive(float w, float l);
-    bool isZero(float w, float l);
+    bool isNeagtive(double w, double l);
+    bool isZero(double w, double l);
     Rectangle* createRect();
 };
 

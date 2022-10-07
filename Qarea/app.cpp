@@ -15,12 +15,12 @@ void App::printPrompt() {
     cout << "-> Please enter the rectangle width and length separated by space" << Qt::endl;
 }
 
-bool App::isNeagtive (float w, float l) {
+bool App::isNeagtive (double w, double l) {
     bool result = (w < 0 || l < 0) ? true : false;
     return result;
 }
 
-bool App::isZero (float w, float l) {
+bool App::isZero (double w, double l) {
     bool result = (w == 0 || l ==  0) ? true : false;
     return result;
 }
