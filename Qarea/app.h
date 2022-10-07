@@ -17,11 +17,12 @@ public:
     Rectangles list;
 
 
-    void readFloats();
+    bool readFloats();
     void printPrompt();
     void addToList();
     void loop();
     bool isNeagtive(float w, float l);
+    bool isZero(float w, float l);
     Rectangle* createRect();
 };
 

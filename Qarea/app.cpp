@@ -16,33 +16,48 @@ void App::printPrompt() {
 }
 
 bool App::isNeagtive (float w, float l) {
-    bool result = (l < 0 || w < 0) ? true : false;
+    bool result = (w < 0 || l < 0) ? true : false;
     return result;
 }
 
-void App::readFloats() {
+bool App::isZero (float w, float l) {
+    bool result = (w == 0 || l ==  0) ? true : false;
+    return result;
+}
+
+bool App::readFloats() {
     QTextStream cin(stdin);
     this->printPrompt();
     cin >> tempW >> tempL;
 
-    if(!(this->isNeagtive(tempW, tempL))) {
+    if(!(this->isNeagtive(tempW, tempL)) && !(this->isZero(tempW, tempL))) {
         this->w = tempW;
         this->l = tempL;
-    } else {
+        return true;
+    } else if(this->isNeagtive(tempW, tempL) && !(this->isZero(tempW, tempL))) {
         this->isRunning = false;
+        return false;
+    } else {
+        return false;
     }
 
     if(cin.status() != QTextStream::Ok) {
         cin.resetStatus();
         throw std::runtime_error("-> Please make sure you enter a float");
+        return false;
     }
+    return false;
 }
 
 Rectangle* App::createRect() {
     try {
-        this->readFloats();
-        Rectangle* r = new Rectangle{this->w, this->l};
-        return r;
+        bool result = this->readFloats();
+        if(result) {
+            Rectangle* r = new Rectangle{this->w, this->l};
+            std::cout << "CREATED" << std::endl;
+            return r;
+        }
+        return nullptr;
     }
 
     catch(const std::runtime_error& err) {
