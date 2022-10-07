@@ -81,4 +81,6 @@ void App::loop() {
             std::cerr << err.what() << std::endl;
         }
     }
+
+    this->list.setAreas();
 }

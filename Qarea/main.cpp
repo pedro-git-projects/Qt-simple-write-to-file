@@ -19,7 +19,8 @@ int main() {
     App* app = new App();
 
    app->loop();
-   cout << app->list;
+  // cout << app->list;
+   app->list.printAreas();
 
 
     /*

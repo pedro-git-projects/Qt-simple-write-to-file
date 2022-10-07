@@ -5,7 +5,7 @@
 
 class Rectangle {
 public:
-    Rectangle(); // 1 x 1 square
+    Rectangle();
     Rectangle(double width, double length);
 
     double getWidth() const;

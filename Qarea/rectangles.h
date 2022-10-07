@@ -13,13 +13,16 @@ public:
 
     friend QTextStream& operator<<(QTextStream& dbg, const Rectangles& r);
 
-    void print();
     void addToList(Rectangle* rect);
 
     QVector<Rectangle*> getRectList() const;
+    void setAreas();
+    QVector<double> getAreas();
+    void printAreas();
 
 private:
     QVector<Rectangle*> rectList;
+    QVector<double> areas;
 };
 
 

@@ -39,3 +39,23 @@ QTextStream& operator<<(QTextStream& dbg, const Rectangles& r) {
 void Rectangles::addToList(Rectangle* rect) {
     this->rectList.push_back(rect);
 }
+
+void Rectangles::setAreas() {
+    QVector<Rectangle*> list = this->getRectList();
+    for(int i = 0; i < list.size(); i++) {
+        this->areas.push_back(list[i]->area());
+    }
+}
+
+QVector<double> Rectangles::getAreas() {
+    return this->areas;
+}
+
+
+void Rectangles::printAreas() {
+    QTextStream cout(stdout);
+    QVector<Rectangle*> list = this->getRectList();
+    for(int i = 0; i < list.size(); i++) {
+        cout << list[i]->area() << Qt::endl;
+    }
+}
