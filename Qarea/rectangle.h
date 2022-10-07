@@ -3,7 +3,6 @@
 
 #include <QTextStream>
 
-
 class Rectangle {
 public:
     Rectangle(); // 1 x 1 square
