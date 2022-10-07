@@ -2,6 +2,7 @@
 #define APP_H
 
 #include <QVector>
+#include <QTextStream>
 #include <stdexcept>
 #include "rectangles.h"
 #include "rectangle.h"
@@ -24,6 +25,7 @@ public:
     bool isNeagtive(double w, double l);
     bool isZero(double w, double l);
     Rectangle* createRect();
+    void outputToFile();
 };
 
 #endif // APP_H

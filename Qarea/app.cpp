@@ -1,6 +1,7 @@
 #include "app.h"
 
 #include <QTextStream>
+#include <QFile>
 #include <iostream>
 #include <stdexcept>
 #include "rectangle.h"
@@ -83,4 +84,20 @@ void App::loop() {
     }
 
     this->list.setAreas();
+}
+
+void App::outputToFile() {
+    QFile outputFile("areas.txt");
+    outputFile.open(QIODevice::WriteOnly | QIODevice::Text);
+    QTextStream out(&outputFile);
+
+    auto areasVec = this->list.getAreas();
+
+    std::cout << "Outputing to file..." << std::endl;
+    for(int i = 0; i < areasVec.size(); i++) {
+        out << areasVec[i] << Qt::endl;
+    }
+
+    outputFile.flush();
+    outputFile.close();
 }
